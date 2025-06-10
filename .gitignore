@@ -17,3 +17,6 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+
+# Uploads from users
+public/assets/images/uploads
