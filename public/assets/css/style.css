@@ -1,0 +1,14 @@
+/*
+Date: 06/03/2025
+
+Style sheet that establish content style and font for guitar information.
+*/
+
+.content {
+    margin-top: 65px;
+}
+
+.font-description {
+    font-family: Helvetica;
+    font-size: large;
+}

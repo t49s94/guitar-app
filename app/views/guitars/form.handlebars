@@ -1,0 +1,43 @@
+<!--
+Date: 06/03/2025
+
+View for users to create or update a guitar
+-->
+<div class="container">
+    <div class="row">
+        <div class="container container--mini">
+            <!-- If guitar object is present, we update it -->
+            {{#if guitar}}
+            <form method="post" action="/guitars/{{guitar.id}}" enctype="multipart/form-data">
+            <!-- If not, we create a new guitar -->
+            {{else}}
+            <form method="post" action="/guitars" enctype="multipart/form-data">
+            {{/if}}
+
+            <div class="form-group mt-2">
+                <label>Make</label>
+                <input type="text" class="form-control" name="guitar_make" value="{{guitar.make}}" />
+            </div>
+            <div class="form-group mt-2">
+                <label>Model</label>
+                <input type="text" class="form-control" name="guitar_model" value="{{guitar.model}}" />
+            </div>
+
+            <div class="form-group mt-2">
+                <label>Image: {{guitar.image}}</label>
+                <input type="file" class="form-control" name="guitar_image" >
+            </div>
+
+            <div class="form-group mt-2">
+                <div class="row text-center align-items-center">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary mb-4">Save</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Helps to determine if user uploaded a nee image for existing guitar -->
+             <input type="hidden" id="existing_image" name="existing_image" value="{{guitar.image}}">
+            </form>
+        </div>
+    </div>
+</div>

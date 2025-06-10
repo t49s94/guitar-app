@@ -1,0 +1,75 @@
+<!--
+Date: 06/03/2025
+
+View that displays all guitars that exist in DB
+-->
+<!-- Script that support Modal functionality-->
+<script src="/assets/js/listGuitarHelper.js"></script>
+
+<div class="container">
+    <div class="row pb-4">
+        <h2>{{title}}</h2>
+    </div>
+    {{#each guitars}}
+    <!-- If guitar counter is even, the background color of row will be darkgray -->
+    {{#ifEven  @index}}
+     <div class="row h5 py-2 my-1" style="background-color:darkgray">
+    <!-- If guitar counter is odd, the background color of row will be lightgray -->
+    {{else}}
+    <div class="row h5 py-2 my-1" style="background-color:lightgray">
+    {{/ifEven }}
+        <div class="col-8">
+            <a href="/guitars/{{this.id}}">
+                    {{this.make}} - {{this.model}}
+            </a>
+        </div>
+
+        <!-- 
+        Attributes, like data-id, are custom attributes that we use to pass information to the event
+        handler.
+         -->
+        <div class="col-2">
+            <a href="/guitars/{{this.id}}/delete" data-id="{{this.id}}" data-make="{{this.make}}" data-model="{{this.model}}" class="btn btn-danger deleteButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="bi bi-trash3-fill"></i>
+            </a>
+        </div>
+
+        <div class="col-2">
+            <a href="/guitars/{{this.id}}/edit" class="btn btn-success">
+                <i class="bi bi-pencil-square"></i>
+            </a>
+        </div>
+        
+    </div>
+    {{/each}}
+
+    <div class="row text-center align-items-center pt-4 ">
+        <div class="col">
+            <a href="/guitars/create" class="btn btn-success">
+            <span class="h5"> New Guitar</span> 
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deletion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        Are you sure you want to delete guitar: {{guitar.make}} - {{guitar.model}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="#" class="btn btn-primary" id="deleteAnchor">
+            Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

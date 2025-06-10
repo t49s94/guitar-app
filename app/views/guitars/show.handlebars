@@ -1,0 +1,64 @@
+<!--
+Date: 06/03/2025
+
+View that displays the information about a guitar.
+-->
+<div class="container">
+    <div class="row justify-content-center text-center align-items-center">
+        <div class="col-8 shadow-lg p-3 mb-5 bg-white rounded font-description">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <img src="/assets/images/uploads/{{guitar.image}}" class="img-fluid" alt="Girl in a jacket">
+                </div>
+            </div>
+
+            <div class="row justify-content-center pt-4">
+                <div class="col-2 fw-bold">Make</div>
+                <div class="col-2">{{guitar.make}}</div>
+            </div>
+
+            <div class="row justify-content-center pt-3">
+                <div class="col-2 fw-bold">Model</div>
+                <div class="col-2">{{guitar.model}}</div>
+            </div>
+
+            <div class="row justify-content-center pt-3">
+                <div class="col-3">
+                    <a href="/guitars/{{guitar.id}}/delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </div>
+
+                <div class="col-3">
+                    <a href="/guitars/{{guitar.id}}/edit" class="btn btn-success" >
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+            
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deletion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete guitar: {{guitar.make}} - {{guitar.model}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/guitars/{{guitar.id}}/delete" class="btn btn-primary">
+            Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    
